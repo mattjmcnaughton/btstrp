@@ -1,0 +1,5 @@
+---
+- name: Set hostname for machine.
+  hostname:
+    name: "{{ hostname }}"
+  when: hostname is defined

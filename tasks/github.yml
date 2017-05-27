@@ -1,0 +1,12 @@
+---
+- name: Read Github public key.
+  shell: "cat ~/.ssh/{{ username }}_github_rsa.pub"
+  register: github_pub_key
+
+- name: Authorize key with Github.
+  github_key:
+    name: "{{ hostname }}_key"
+    state: present
+    token: "{{ github_access_token }}"
+    pubkey: "{{ github_pub_key.stdout }}"
+  when: hostname is defined

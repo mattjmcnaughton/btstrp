@@ -1,0 +1,13 @@
+---
+username: mattjmcnaughton
+
+git_settings:
+  - { name: "user.email", value: "mattjmcnaughton@gmail.com", scope: "global" }
+  - { name: "user.name", value: "mattjmcnaughton", scope: "global" }
+  - { name: "core.editor", value: "vim", scope: "global" }
+
+ssh_key_suffixes:
+  - github_rsa
+  - digital_ocean_rsa
+  - aws_rsa
+  - rsa

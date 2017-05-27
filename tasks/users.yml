@@ -1,0 +1,9 @@
+---
+- name: Create user with desired ssh keys.
+  user:
+    name: "{{ username }}"
+    generate_ssh_key: yes
+    ssh_key_bits: 4096
+    ssh_key_file: ".ssh/{{ username }}_{{ item }}"
+  with_items: "{{ ssh_key_suffixes }}" 
+

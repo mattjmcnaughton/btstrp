@@ -1,0 +1,27 @@
+---
+- hosts: localhost
+  connection: local
+
+  vars_files:
+    - vars/main.yml
+
+  tasks:
+    - name: Include OS-specific variables.
+      include_vars: "vars/{{ ansible_os_family }}.yml"
+
+    - name: Configure the base settings of the machine.
+      include: "tasks/base.yml"
+
+    - name: Install and uninstall OS-specific packages.
+      include: "tasks/packages-{{ ansible_os_family }}.yml"
+      static: no
+
+    - name: Configure users.
+      include: "tasks/users.yml"
+
+    - name: Configure git.
+      include: "tasks/git.yml"
+
+    - name: Perform Github account configuration.
+      include: "tasks/github.yml"
+      when: github_access_token is defined

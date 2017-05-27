@@ -1,0 +1,35 @@
+---
+# Sync with particular keyservers/repositories if necessary.
+keyservers_to_add:
+  - { keyserver: "keyserver.ubuntu.com", id: "BBEBDCB318AD50EC6865090613B00F1FD2C19886" }
+
+apt_repositories_to_add:
+  - "deb http://repository.spotify.com stable non-free"
+
+packages_to_install:
+  - chromium-browser
+  - git
+  - irssi
+  - mutt
+  - silversearcher-ag
+  - spotify-client
+  - synapse
+  - tmux
+  - vim
+
+# `debs_to_install` are only available as deb packages, not through apt.
+debs_to_install:
+  - https://update.gitter.im/linux64/gitter_3.1.0_amd64.deb
+  - https://downloads.slack-edge.com/linux_releases/slack-desktop-2.6.2-amd64.deb
+
+packages_to_uninstall:
+  - deadbeef
+  - galliumos-newtab-chromium
+  - gnome-terminal
+  - hexchat
+  - konsole
+  - orage
+  - pidgin
+  - terminator
+  - xterm
+  - vlc

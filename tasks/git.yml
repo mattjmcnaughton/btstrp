@@ -1,0 +1,7 @@
+---
+- name: Configure git settings.
+  git_config:
+    name: "{{ item.name }}"
+    value: "{{ item.value }}"
+    scope: "{{ item.scope }}"
+  with_items: "{{ git_settings }}"
