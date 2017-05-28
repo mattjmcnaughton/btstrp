@@ -1,0 +1,16 @@
+---
+- name: Check if rustup is installed
+  shell: which rustup
+  ignore_errors: yes
+  register: rustup
+
+- block:
+    - get_url: url=https://sh.rustup.rs dest=/tmp/rustup-init.sh mode=u+rwx
+    - command: /tmp/rustup-init.sh -y
+  always:
+    - file: path=/tmp/rustup-init.sh state=absent
+  when: rustup.rc != 0
+
+- name: Update Rust.
+  shell: rustup update
+  when: rustup.rc == 0

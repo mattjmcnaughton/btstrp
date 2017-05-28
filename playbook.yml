@@ -33,6 +33,9 @@
     - name: Install python and relevant packages.
       include: "tasks/python.yml"
 
+    - name: Install Rust and relevant packages.
+      include: "tasks/rust.yml"
+
     - name: Install Docker (separately if on Linux machine).
       include: "tasks/docker.yml"
       when: ansible_os_family == "Debian"
