@@ -1,0 +1,14 @@
+# ~/.bashrc.local Additional configurations to bashrc.
+
+# Source the default python virtual environment.
+source {{ virtual_env }}/bin/activate
+
+# Enable git autocompletion.
+source {{ git_completion_bash }}
+
+# Set vi for editor shortcuts and vim as the default editor.
+set -o vi
+export EDITOR='vim'
+
+# Update $PATH to include the `~/.utility_[script|bin]_dir`
+PATH=$PATH:{{ utility_script_dir }}:{{ utility_bin_dir }}

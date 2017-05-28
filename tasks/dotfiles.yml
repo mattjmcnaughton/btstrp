@@ -1,4 +1,47 @@
 ---
+- name: Install git autocomplete.
+  get_url:
+    url: https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
+    dest: "{{ git_completion_bash }}"
+
+- name: Copy the bashrc.local configuration into place.
+  template:
+    src: templates/bash/bashrc.local.j2
+    dest: ~/.bashrc.local
+
+- name: Ensure the `~/.bashrc` file exists.
+  file:
+    path: ~/.bashrc
+    state: file
+
+- name: Ensure `~/.bashrc` loads ~/.bashrc.local if on Linux.
+  lineinfile:
+    path: ~/.bashrc
+    line: "[ -s ~/.bashrc.local ] && source ~/.bashrc.local"
+
+- name: Ensure the `~/.utility_*` directories exist
+  file:
+    path: "{{ item }}"
+    state: directory
+  with_items:
+    - "{{ utility_script_dir }}"
+    - "{{ utility_bin_dir }}"
+
+- name: Copy the directory of utility scripts.
+  copy:
+    src: files/bash/utility_script
+    dest: "{{ utility_script_dir }}"
+
+- name: Copy the directory of utility binaries.
+  copy:
+    src: files/bash/utility_bin
+    dest: "{{ utility_bin_dir }}"
+
+- name: Copy the bash.aliases configuration into place.
+  copy:
+    src: files/bash/bash_aliases
+    dest: ~/.bash_aliases
+
 - name: Copy tmux configuration into place.
   copy:
     src: files/tmux/tmux.conf

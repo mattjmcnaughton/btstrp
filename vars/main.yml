@@ -20,3 +20,7 @@ pip_packages:
   - Sphinx
 
 virtual_env: "~/.venv"
+git_completion_bash: "~/.git-completion.bash"
+
+utility_script_dir: "~/.utility_script"
+utility_bin_dir: "~/.utility_bin"
