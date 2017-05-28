@@ -15,6 +15,7 @@
     - name: Install and uninstall OS-specific packages.
       include: "tasks/packages-{{ ansible_os_family }}.yml"
       static: no
+      become: yes
 
     - name: Configure users.
       include: "tasks/users.yml"
@@ -31,3 +32,8 @@
 
     - name: Install python and relevant packages.
       include: "tasks/python.yml"
+
+    - name: Install Docker (separately if on Linux machine).
+      include: "tasks/docker.yml"
+      when: ansible_os_family == "Debian"
+      become: yes

@@ -3,42 +3,35 @@
   apt_key:
     keyserver: "{{ item.keyserver }}"
     id: "{{ item.id }}"
-  become: yes
   with_items: "{{ keyservers_to_add }}"
 
 - name: Add the necessary additional apt repositories.
   apt_repository:
     repo: "{{ item }}"
     state: present
-  become: yes
   with_items: "{{ apt_repositories_to_add }}"
 
 - name: Install the desired packages.
   apt:
     name: "{{ item }}"
     state: latest
-  become: yes
   with_items: "{{ packages_to_install }}"
 
 - name: Install the desired debs.
   apt:
     deb: "{{ item }}"
-  become: yes
   with_items: "{{ debs_to_install }}"
 
 - name: Uninstall the desired packages.
   apt:
     name: "{{ item }}"
     state: absent
-  become: yes
   with_items: "{{ packages_to_uninstall }}"
 
 - name: Remove useless packages from the cache.
   apt:
     autoclean: yes
-  become: yes
 
 - name: Remove dependencies that are no longer required.
   apt:
     autoremove: yes
-  become: yes
