@@ -11,6 +11,7 @@ packages_to_install:
   - git
   - irssi
   - mutt
+  - python-pip
   - silversearcher-ag
   - spotify-client
   - synapse

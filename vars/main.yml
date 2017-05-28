@@ -11,3 +11,12 @@ ssh_key_suffixes:
   - digital_ocean_rsa
   - aws_rsa
   - rsa
+
+pip_packages:
+  - boto
+  - dopy
+  - pylint
+  - jupyter
+  - Sphinx
+
+virtual_env: "~/.venv"

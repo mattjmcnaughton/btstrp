@@ -1,0 +1,12 @@
+---
+- name: Install virtualenv pip package.
+  pip:
+    name: virtualenv
+    state: latest
+
+- name: Install specified packages into the virtual env.
+  pip:
+    name: "{{ item }}"
+    virtualenv: "{{ virtual_env }}"
+    state: latest
+  with_items: "{{ pip_packages }}"
