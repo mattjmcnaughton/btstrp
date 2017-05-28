@@ -28,3 +28,6 @@
 
     - name: Configure dotfiles.
       include: "tasks/dotfiles.yml"
+
+    - name: Install python and relevant packages.
+      include: "tasks/python.yml"
