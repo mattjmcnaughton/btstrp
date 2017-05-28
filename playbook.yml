@@ -25,3 +25,6 @@
     - name: Perform Github account configuration.
       include: "tasks/github.yml"
       when: github_access_token is defined
+
+    - name: Configure dotfiles.
+      include: "tasks/dotfiles.yml"

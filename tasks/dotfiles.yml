@@ -1,0 +1,27 @@
+---
+- name: Copy tmux configuration into place.
+  copy:
+    src: files/tmux/tmux.conf
+    dest: ~/.tmux.conf
+
+- name: Create the `.vim/bundle` directory.
+  file:
+    path: ~/.vim/bundle
+    state: directory
+
+- name: Install Vundle.
+  git:
+    repo: "https://github.com/VundleVim/Vundle.vim.git"
+    dest: ~/.vim/bundle/Vundle.vim
+
+- name: Copy the vim configuration files into place.
+  copy:
+    src: "files/vim/{{ item }}"
+    dest: "~/.{{ item }}"
+  with_items:
+    - "vimrc"
+    - "vimrc.local"
+    - "vimrc.bundles"
+
+- name: Install Plugins using Vundle.
+  command: vim +PluginInstall +qall
