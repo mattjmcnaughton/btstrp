@@ -18,6 +18,9 @@ then
         sudo apt-add-repository ppa:ansible/ansible
         sudo apt-get update
         sudo apt-get install ansible
+
+        mkdir roles
+        ansible-galaxy install -r requirements.yml
     else
         exit 1
     fi
