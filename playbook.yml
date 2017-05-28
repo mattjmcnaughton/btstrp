@@ -9,6 +9,12 @@
     - name: Include OS-specific variables.
       include_vars: "vars/{{ ansible_os_family }}.yml"
 
+    # @TODO(mattjmcnaughton) Make it possible to configure whether to use the
+    # `large.yml` or `small.yml` variables, depending on the type of machine
+    # we are using for the install.
+    - name: 
+      include_vars: "vars/small.yml"
+
     - name: Configure the base settings of the machine.
       include: "tasks/base.yml"
 
@@ -35,6 +41,9 @@
 
     - name: Install Rust and relevant packages.
       include: "tasks/rust.yml"
+
+    - name: Install Go and relevant packages.
+      include: "tasks/go.yml"
 
     - name: Install Docker (separately if on Linux machine).
       include: "tasks/docker.yml"

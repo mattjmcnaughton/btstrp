@@ -9,6 +9,7 @@ apt_repositories_to_add:
 packages_to_install:
   - chromium-browser
   - git
+  - golang-go
   - irssi
   - mutt
   - python-pip

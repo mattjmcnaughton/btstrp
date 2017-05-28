@@ -1,0 +1,14 @@
+---
+- name: Ensure gopath exists.
+  file:
+    path: "{{ go_path }}"
+    state: directory
+
+- name: Check if golint is installed.
+  shell: which golint
+  ignore_errors: yes
+  register: golint
+
+- name: Install golint if necessary.
+  shell: "GOPATH={{ go_path }} go get -u github.com/golang/lint/golint"
+  when: golint.rc != 0
