@@ -1,0 +1,3 @@
+---
+# Variables for when we are installing on a larger system (i.e. MacBook Pro).
+go_path: ~/Dropbox/Developer/code/Projects/go

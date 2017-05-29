@@ -9,6 +9,7 @@ apt_repositories_to_add:
 packages_to_install:
   - chromium-browser
   - git
+  - golang-go
   - irssi
   - mutt
   - python-pip
@@ -16,7 +17,9 @@ packages_to_install:
   - spotify-client
   - synapse
   - tmux
+  - vagrant
   - vim
+  - virtualbox
 
 # `debs_to_install` are only available as deb packages, not through apt.
 debs_to_install:
