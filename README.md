@@ -1,7 +1,6 @@
 # btstrp
 
-`btstrp` works to easily configure a new unix computer
-to my specifications.
+Using ansible to quickly and constantly configure Unix desktops for development.
 
 ## Usage
 
