@@ -1,4 +1,0 @@
----
-- name: Include the Docker role to handle installation.
-  include_role:
-    name: geerlingguy.docker
