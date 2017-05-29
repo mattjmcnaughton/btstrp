@@ -10,12 +10,12 @@ packages_to_install:
   - chromium-browser
   - git
   - golang-go
+  - i3
   - irssi
   - mutt
   - python-pip
   - silversearcher-ag
   - spotify-client
-  - synapse
   - tmux
   - vagrant
   - vim
@@ -34,6 +34,7 @@ packages_to_uninstall:
   - konsole
   - orage
   - pidgin
+  - synapse
   - terminator
   - xterm
   - vlc
