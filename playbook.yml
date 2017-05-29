@@ -33,6 +33,10 @@
       include: "tasks/github.yml"
       when: github_access_token is defined
 
+    - name: Install and configure i3.
+      include: "tasks/i3.yml"
+      when: ansible_os_family == "Debian"
+
     - name: Configure dotfiles.
       include: "tasks/dotfiles.yml"
 

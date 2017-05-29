@@ -1,0 +1,22 @@
+---
+- name: Ensure the i3 config directory exists.
+  file:
+    path: ~/.config/i3
+    state: directory
+
+- name: Copy the i3 configuration file.
+  copy:
+    src: files/i3/config
+    dest: ~/.config/i3/config
+
+- name: Check if using lxdm
+  command: which lxdm
+  register: lxdm
+
+- name: Update lxdm configuration file to use i3.
+  lineinfile:
+    path: /etc/lxdm/lxdm.conf
+    regexp: "^session="
+    line: "session=/usr/bin/i3"
+  when: lxdm.rc == 0
+  become: yes
