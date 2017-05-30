@@ -1,0 +1,8 @@
+---
+- debug:
+    msg: >
+      `btstrp` for {{ ansible_os_family }} does not currently support:
+      - Disk encryption (either full disk which should be during
+        install) or Home directory (which should be done manually
+        with ecryptfs, because it requires the user whose
+        disk we are encrypting to have no currently running processes).

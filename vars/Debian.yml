@@ -8,6 +8,7 @@ apt_repositories_to_add:
 
 packages_to_install:
   - chromium-browser
+  - clamav
   - git
   - golang-go
   - i3
@@ -27,6 +28,7 @@ debs_to_install:
   - https://downloads.slack-edge.com/linux_releases/slack-desktop-2.6.2-amd64.deb
 
 packages_to_uninstall:
+  - cups-browsed
   - deadbeef
   - galliumos-newtab-chromium
   - gnome-terminal
@@ -34,7 +36,17 @@ packages_to_uninstall:
   - konsole
   - orage
   - pidgin
+  - postfix
   - synapse
   - terminator
+  - thunar
   - xterm
   - vlc
+  - xconf
+  - xfce4-panel
+  - xfce4-session
+  - xfce4-terminal
+  - xfce4-utils
+  - xfdesktop4
+  - xfwm4
+

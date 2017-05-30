@@ -59,3 +59,7 @@
         name: geerlingguy.docker
       when: ansible_os_family == "Debian"
       become: yes
+
+    - name: Log manual configuration still needed.
+      include: "tasks/manual-{{ ansible_os_family }}.yml"
+      static: no
