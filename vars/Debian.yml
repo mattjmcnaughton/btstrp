@@ -22,6 +22,7 @@ packages_to_install:
   - vagrant
   - vim
   - virtualbox
+  - xterm
   # Must occur after other dependencies have been added.
   - python-selinux
 
@@ -43,7 +44,6 @@ packages_to_uninstall:
   - synapse
   - terminator
   - thunar
-  - xterm
   - vlc
   - xconf
   - xfce4-panel

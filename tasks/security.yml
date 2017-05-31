@@ -5,3 +5,13 @@
     state: enforcing
   become: yes
   when: ansible_os_family == "Debian"
+
+# By default, will allow loopback and established/recognized incoming
+# connections
+- name: Install Firewall allowing no external connections.
+  include_role:
+    name: geerlingguy.firewall
+  vars:
+    firewall_allowed_tcp_ports: []
+  become: yes
+  when: ansible_os_family == "Debian"
