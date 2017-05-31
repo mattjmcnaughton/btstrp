@@ -15,12 +15,15 @@ packages_to_install:
   - irssi
   - mutt
   - python-pip
+  - selinux
   - silversearcher-ag
   - spotify-client
   - tmux
   - vagrant
   - vim
   - virtualbox
+  # Must occur after other dependencies have been added.
+  - python-selinux
 
 # `debs_to_install` are only available as deb packages, not through apt.
 debs_to_install:

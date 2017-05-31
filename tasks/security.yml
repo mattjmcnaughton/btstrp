@@ -1,0 +1,7 @@
+---
+- name: Ensure SELinux is enabled in targeted mode.
+  selinux:
+    policy: targeted
+    state: enforcing
+  become: yes
+  when: ansible_os_family == "Debian"
