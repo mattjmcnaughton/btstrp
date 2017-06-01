@@ -15,3 +15,21 @@
     firewall_allowed_tcp_ports: []
   become: yes
   when: ansible_os_family == "Debian"
+
+- name: Ensure sshd_config file exists
+  file:
+    path: /etc/ssh/sshd_config
+    state: touch
+    mode: "u+rw,g+r,o+r"
+  become: yes
+
+- name: Disable root ssh and password ssh
+  lineinfile:
+    path: /etc/ssh/sshd_config
+    regexp: "{{ item.regexp }}"
+    line: "{{ item.line }}"
+    state: present
+  with_items:
+    - { regexp: "^PermitRootLogin", line: "PermitRootLogin no" }
+    - { regexp: "^PasswordAuthentication", line: "PasswordAuthentication no" }
+  become: yes
