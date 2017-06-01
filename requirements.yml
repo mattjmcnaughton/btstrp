@@ -1,3 +1,4 @@
 ---
 - src: geerlingguy.docker
+- src: geerlingguy.firewall
 - src: zzet.rbenv

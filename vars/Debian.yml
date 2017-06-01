@@ -8,18 +8,23 @@ apt_repositories_to_add:
 
 packages_to_install:
   - chromium-browser
+  - clamav
   - git
   - golang-go
   - i3
   - irssi
   - mutt
   - python-pip
+  - selinux
   - silversearcher-ag
   - spotify-client
   - tmux
   - vagrant
   - vim
   - virtualbox
+  - xterm
+  # Must occur after other dependencies have been added.
+  - python-selinux
 
 # `debs_to_install` are only available as deb packages, not through apt.
 debs_to_install:
@@ -27,6 +32,7 @@ debs_to_install:
   - https://downloads.slack-edge.com/linux_releases/slack-desktop-2.6.2-amd64.deb
 
 packages_to_uninstall:
+  - cups-browsed
   - deadbeef
   - galliumos-newtab-chromium
   - gnome-terminal
@@ -34,7 +40,16 @@ packages_to_uninstall:
   - konsole
   - orage
   - pidgin
+  - postfix
   - synapse
   - terminator
-  - xterm
+  - thunar
   - vlc
+  - xconf
+  - xfce4-panel
+  - xfce4-session
+  - xfce4-terminal
+  - xfce4-utils
+  - xfdesktop4
+  - xfwm4
+
