@@ -5,8 +5,8 @@
     state: directory
 
 - name: Copy the i3 configuration file.
-  copy:
-    src: files/i3/config
+  template:
+    src: templates/i3/config.j2
     dest: ~/.config/i3/config
 
 - name: Check if using lxdm

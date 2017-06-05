@@ -58,3 +58,4 @@ autocmd Filetype php setlocal ts=4 sts=4 sw=4
 autocmd Filetype go setlocal ts=8 sts=8 sw=8 nolist
 autocmd Filetype python setlocal ts=4 sts=4 sw=4
 autocmd Filetype java setlocal ts=4 sts=4 sw=4
+autocmd Filetype sh setlocal ts=4 sts=4 sw=4
