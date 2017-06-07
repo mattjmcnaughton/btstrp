@@ -9,33 +9,62 @@
     src: templates/bash/bashrc.local.j2
     dest: ~/.bashrc.local
 
+- name: Copy the `profile.local` file into place.
+  template:
+    src: templates/bash/profile.local.j2
+    dest: ~/.profile.local
+
 - name: Ensure the `~/.bashrc` file exists.
   file:
     path: ~/.bashrc
     state: file
 
-- name: Ensure `~/.bashrc` loads ~/.bashrc.local if on Linux.
+- name: Ensure `~/.bashrc` loads `~/.bashrc.local`
   lineinfile:
     path: ~/.bashrc
     line: "[ -s ~/.bashrc.local ] && source ~/.bashrc.local"
 
-- name: Ensure the `~/.utility_*` directories exist
+- name: Ensure the `~/.profile` file exists.
   file:
-    path: "{{ item }}"
+    path: ~/.profile
+    state: file
+
+- name: Ensure `~/.profile` loads ~/.profile.local`.
+  lineinfile:
+    path: ~/.profile
+    line: "[ -s ~/.profile.local ] && source ~/.profile.local"
+
+- name: Create the utility dirs
+  file:
     state: directory
+    path: "{{ item }}"
   with_items:
     - "{{ utility_script_dir }}"
     - "{{ utility_bin_dir }}"
 
 - name: Copy the directory of utility scripts.
   copy:
-    src: files/bash/utility_script
-    dest: "{{ utility_script_dir }}"
+    src: "{{ item }}"
+    dest: "{{ utility_script_dir }}/"
+  with_fileglob:
+    - files/bash/utility_script/*
 
 - name: Copy the directory of utility binaries.
   copy:
-    src: files/bash/utility_bin
-    dest: "{{ utility_bin_dir }}"
+    src: "{{ item }}"
+    dest: "{{ utility_bin_dir }}/"
+  with_fileglob:
+    - files/bash/utility_bin/*
+
+- name: Set the utility directories to be executable only by the user.
+  file:
+    path: "{{ item }}"
+    state: directory
+    mode: 0700
+    recurse: yes
+  with_items:
+    - "{{ utility_script_dir }}"
+    - "{{ utility_bin_dir }}"
 
 - name: Copy the bash.aliases configuration into place.
   copy:
