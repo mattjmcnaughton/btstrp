@@ -2,8 +2,6 @@
 # Configure any connected mouse devices with decreased acceleration
 # and natural scrolling.
 #
-# Most effectively run on system login (i.e. called from `~/.profile`.
-#
 # Usage:
 #     xinput_configuration.sh
 

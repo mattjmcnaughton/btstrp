@@ -49,6 +49,13 @@
   with_fileglob:
     - files/bash/utility_script/*
 
+- name: Copy in the external utility scripts.
+  get_url:
+    url: "{{ item.url }}"
+    dest: "{{ utility_script_dir }}/{{ item.file_name }}"
+  with_items:
+    - { url: "https://raw.githubusercontent.com/mattjmcnaughton/brockman/master/brockman.sh", file_name: "brockman.sh" }
+
 - name: Copy the directory of utility binaries.
   copy:
     src: "{{ item }}"
