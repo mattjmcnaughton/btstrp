@@ -6,9 +6,13 @@
 
 set -e
 
-DEFAULT_INCREMENT=5
+# Explicitly set path to be restrictively small.
+export PATH=/bin:/usr/bin
+
 AMIXER_BASE="amixer -D pulse"
 AMIXER_SET="$AMIXER_BASE sset Master"
+DEFAULT_INCREMENT=5
+PROGRAM=$(basename $0)
 
 audio::mute() {
     bash -c "$AMIXER_SET 0\% mute"
@@ -31,7 +35,7 @@ audio::status() {
 }
 
 audio::usage() {
-    echo "audio.sh [COMMAND] [ARGUMENTS]"
+    echo "$PROGRAM [COMMAND] [ARGUMENTS]"
 }
 
 case $1 in
@@ -64,8 +68,8 @@ help)
     audio::usage
     ;;
 *)
-    echo "Improper arguments passed to audio.sh"
-    audio::usage
+    echo "$PROGRAM $@" >&2
+    audio::usage >& 2
     exit 2
     ;;
 esac

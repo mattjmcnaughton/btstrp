@@ -8,6 +8,11 @@
 
 set -e
 
+# Explicitly set path to be very small.
+export PATH=/bin:/usr/bin
+
+
+PROGRAM=$(basename $0)
 SLEEP_CONSTANT=1
 
 # `wifi connect` assumes that we need a password.
@@ -38,7 +43,7 @@ wifi::status() {
 }
 
 wifi::usage() {
-    echo "wifi.sh [COMMAND] [ARGUMENTS]"
+    echo "$PROGRAM [COMMAND] [ARGUMENTS]"
 }
 
 case $1 in
@@ -69,8 +74,8 @@ help)
     wifi::usage
     ;;
 *)
-    echo "Command not recognized."
-    wifi::usage
+    echo "$PROGRAM $@" >&2
+    wifi::usage >& 2
     exit 2
     ;;
 esac
