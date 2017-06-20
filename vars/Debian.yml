@@ -11,6 +11,7 @@ packages_to_install:
   - clamav
   - git
   - golang-go
+  - hugo
   - i3
   - irssi
   - mutt
