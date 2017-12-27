@@ -1,5 +1,8 @@
 # btstrp
 
+*DEPRECATED* - in favor of
+[sheepdoge](https://github.com/mattjmcnaughton/sheepdoge)
+
 Using ansible to quickly and constantly configure Unix desktops for development.
 
 ## Usage
